@@ -1,25 +1,27 @@
 from flask import Flask, render_template, request
+import os
 import requests
 
 app = Flask(__name__)
 
-API_KEY = "5d1385e6abf44817c655628928ab5512"
-
+# Fetch API key from environment variables (fallback to yours for safety if needed)
+# Safe version: only looks for the environment variable, no hardcoded key
+API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 @app.route("/", methods=["GET", "POST"])
 def home():
     weather_data = None
     error = None
     
     if request.method == "POST":
-        city = request.form.get("city").strip()
+        city = request.form.get("city")
         if city:
+            city = city.strip()
             url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
             try:
                 response = requests.get(url)
                 data = response.json()
                 
                 if data.get("cod") == 200:
-                    # Choose emoji based on weather condition
                     desc = data["weather"][0]["description"].lower()
                     emoji = "☀️" if "clear" in desc else "🌧️" if "rain" in desc else "☁️" if "cloud" in desc else "🌤️"
                     
