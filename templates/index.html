@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="weather-container">
+        <h1>🌍 Aura Weather</h1>
+        
+        <form method="POST" class="search-form">
+            <input type="text" name="city" placeholder="Enter city name..." required autocomplete="off">
+            <button type="submit">Check Weather</button>
+        </form>
+
+        {% if error %}
+            <div class="alert error">{{ error }}</div>
+        {% endif %}
+
+        {% if weather %}
+            <div class="weather-card">
+                <div class="weather-icon">{{ weather.emoji }}</div>
+                <h2>{{ weather.city }}, {{ weather.country }}</h2>
+                <div class="temp">{{ weather.temp }}°C</div>
+                <p class="desc">{{ weather.description }}</p>
+                
+                <div class="details-grid">
+                    <div><span>Feels Like:</span> {{ weather.feels_like }}°C</div>
+                    <div><span>Humidity:</span> {{ weather.humidity }}%</div>
+                    <div><span>Wind Speed:</span> {{ weather.wind }} m/s</div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

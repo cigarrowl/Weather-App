@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 380px;
+    text-align: center;
+}
+
+h1 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #0984e3;
+}
+
+button {
+    background-color: #0984e3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #74b9ff;
+}
+
+.weather-card {
+    background: #f1f2f6;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-icon {
+    font-size: 48px;
+    margin-bottom: 5px;
+}
+
+.weather-card h2 {
+    margin: 5px 0;
+    color: #2d3436;
+    font-size: 20px;
+}
+
+.temp {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0984e3;
+    margin: 10px 0;
+}
+
+.desc {
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    color: #2d3436;
+    border-top: 1px solid #dfe6e9;
+    padding-top: 12px;
+    text-align: left;
+}
+
+.details-grid span {
+    font-weight: 600;
+    color: #636e72;
+}
+
+.alert.error {
+    background-color: #ff7675;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
